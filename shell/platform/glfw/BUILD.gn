@@ -32,6 +32,8 @@ source_set("flutter_glfw_headers") {
 
 source_set("flutter_glfw") {
   sources = [
+    "external_texture_gl.cc",
+    "external_texture_gl.h",
     "flutter_glfw.cc",
     "glfw_event_loop.cc",
     "glfw_event_loop.h",
@@ -56,10 +58,10 @@ source_set("flutter_glfw") {
     "$flutter_root/shell/platform/common/cpp/client_wrapper:client_wrapper",
     "$flutter_root/shell/platform/embedder:embedder_with_symbol_prefix",
     "$flutter_root/shell/platform/glfw/client_wrapper:client_wrapper_glfw",
+    "$flutter_root/third_party/glad",
     "//build/secondary/third_party/glfw",
     "//third_party/rapidjson",
   ]
-
   if (is_linux) {
     libs = [ "GL" ]
 

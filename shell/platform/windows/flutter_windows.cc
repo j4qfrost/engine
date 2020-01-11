@@ -13,6 +13,7 @@
 #include <vector>
 
 #include "flutter/shell/platform/common/cpp/client_wrapper/include/flutter/plugin_registrar.h"
+#include "flutter/shell/platform/common/cpp/client_wrapper/include/flutter/texture_registrar.h"
 #include "flutter/shell/platform/common/cpp/incoming_message_dispatcher.h"
 #include "flutter/shell/platform/embedder/embedder.h"
 #include "flutter/shell/platform/windows/key_event_handler.h"
@@ -261,4 +262,34 @@ void FlutterDesktopMessengerSetCallback(FlutterDesktopMessengerRef messenger,
                                         FlutterDesktopMessageCallback callback,
                                         void* user_data) {
   messenger->dispatcher->SetMessageCallback(channel, callback, user_data);
+}
+
+// Texture support isn't implemented yet for Windows,
+// Please refer to https://github.com/flutter/flutter/issues/38601.
+FlutterDesktopTextureRegistrarRef FlutterDesktopGetTextureRegistrar(
+    FlutterDesktopPluginRegistrarRef registrar) {
+  std::cout << "Texture support is not yet implemented." << std::endl;
+  return reinterpret_cast<FlutterDesktopTextureRegistrarRef>(nullptr);
+}
+
+int64_t FlutterDesktopRegisterExternalTexture(
+    FlutterDesktopTextureRegistrarRef texture_registrar,
+    FlutterTextureCallback texture_callback,
+    void* user_data) {
+  std::cout << "Texture support is not yet implemented." << std::endl;
+  return -1;
+}
+
+bool FlutterDesktopUnregisterExternalTexture(
+    FlutterDesktopTextureRegistrarRef texture_registrar,
+    int64_t texture_id) {
+  std::cout << "Texture support is not yet implemented." << std::endl;
+  return false;
+}
+
+bool FlutterDesktopMarkExternalTextureFrameAvailable(
+    FlutterDesktopTextureRegistrarRef texture_registrar,
+    int64_t texture_id) {
+  std::cout << "Texture support is not yet implemented." << std::endl;
+  return false;
 }
